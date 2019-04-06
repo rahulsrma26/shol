@@ -8,20 +8,49 @@ I've tried to make it as cross platform as possible. But there is no guarantee. 
 
 ## Install
 
-Just copy the headers:
-    Copy the [include](include) folder to your build tree and use a C++14 compiler.
+Just copy the headers.
+
+* Copy the [include](include) folder to your build tree and use a C++14 compiler.
 
 ---
 
-## Examples
+## Running examples
 
 Examples can be build using [cmake](https://cmake.org/).
 
-First create a build directory
-```sh
-mkdir build
-cd build
-cmake ..
-make
-```
+* Linux and MacOS (make)
+    ```sh
+    mkdir build
+    cd build
+    cmake ..
+    make
+    ```
+
+* Windows
+
+    Visual Studio 2017 and later can directly open that project. And it'll automatically configure it. However, if you want to do using Developer Command prompt then run:
+    ```sh
+    mkdir build
+    cd build
+    cmake ..
+    msbuild examples.sln /t:Build /p:Configuration=Release
+    ```
+
+Examples can also be build using [ninja](https://ninja-build.org/) across any platform.
+
+* Using ninja
+    ```sh
+    mkdir build
+    cd build
+    cmake .. -GNinja
+    ninja -v
+    ```
+
+* If you want to use mingw (GCC) instead of MSVC under windows then [chocolatey](https://chocolatey.org/) can be used to install dependencies for ninja build.
+
+    ```sh
+    choco intall -y mingw ninja cmake
+    ```
+    After that append cmake install path ("C:\Program Files\CMake\bin") to [Environment Variable](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).
+
 

@@ -1,4 +1,4 @@
-#include "io/printer.hpp"
+#include "shol/io/printer.hpp"
 #include <iostream>
 #include <map>
 #include <string>
@@ -8,6 +8,9 @@
 int main() {
     using namespace std;
     using namespace shol;
+
+    pair<int, string> pr = {1, "one"};
+    cout << "pair<int, string>: " << pr << endl;
 
     tuple<int, double, string> tpl = {1, 2.0, "test"};
     cout << "tuple<int, double, string>: " << tpl << endl;
