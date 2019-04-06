@@ -30,9 +30,10 @@ int main() {
 
 /*
 Expected Output:
+pair<int, string>: (1, one)
 tuple<int, double, string>: (1, 2, test)
-vector<int>: [1, 2, 3, 4]
-vector<pair<int, string>>: [(1, one), (2, two)]
-map<string,int>: [(1, one), (2, two)]
-vector<vector<int>>: [[1, 2], [3, 4]]
+vector<int>: {1, 2, 3, 4}
+vector<pair<int, string>>: {(1, one), (2, two)}
+map<string,int>: {(1, one), (2, two)}
+vector<vector<int>>: {{1, 2}, {3, 4}}
 */

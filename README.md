@@ -28,13 +28,16 @@ Examples can be build using [cmake](https://cmake.org/).
 
 * Windows
 
-    Visual Studio 2017 and later can directly open that project. And it'll automatically configure it. However, if you want to do using Developer Command prompt then run:
+    Visual Studio 2017 and later can directly open a CMake project. However, if you want to build using Developer Command prompt instead then run:
     ```sh
     mkdir build
     cd build
     cmake ..
     msbuild examples.sln /t:Build /p:Configuration=Release
     ```
+---
+
+## More ways to build
 
 Examples can also be build using [ninja](https://ninja-build.org/) across any platform.
 
@@ -52,5 +55,3 @@ Examples can also be build using [ninja](https://ninja-build.org/) across any pl
     choco intall -y mingw ninja cmake
     ```
     After that append cmake install path ("C:\Program Files\CMake\bin") to [Environment Variable](https://helpdeskgeek.com/windows-10/add-windows-path-environment-variable/).
-
-
