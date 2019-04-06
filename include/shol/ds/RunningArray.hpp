@@ -10,7 +10,7 @@ class RunningArray {
     size_t _n, _i;
     T _sum;
 
-  public:
+public:
     RunningArray(size_t n) : _n(n), _i(0), _sum(0) { _data.reserve(_n); }
 
     T next(const T& x) {

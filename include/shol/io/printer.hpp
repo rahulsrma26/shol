@@ -7,23 +7,19 @@ namespace shol {
 
 // --------------------[ pair ]--------------------
 template <class Ch, class Tr, class T1, class T2>
-decltype(auto) operator<<(std::basic_ostream<Ch, Tr>& os,
-                          const std::pair<T1, T2>& val) {
+decltype(auto) operator<<(std::basic_ostream<Ch, Tr>& os, const std::pair<T1, T2>& val) {
     return os << '(' << val.first << ',' << ' ' << val.second << ')';
 }
 
 // --------------------[ tuple ]--------------------
 template <class Ch, class Tr, class Tuple, std::size_t... Is>
-void print_tuple(std::basic_ostream<Ch, Tr>& os, Tuple const& t,
-                 std::index_sequence<Is...>) {
+void print_tuple(std::basic_ostream<Ch, Tr>& os, Tuple const& t, std::index_sequence<Is...>) {
     using swallow = int[];
-    (void)swallow{0,
-                  (void(os << (Is == 0 ? "" : ", ") << std::get<Is>(t)), 0)...};
+    (void)swallow{0, (void(os << (Is == 0 ? "" : ", ") << std::get<Is>(t)), 0)...};
 }
 
 template <class Ch, class Tr, class... Args>
-decltype(auto) operator<<(std::basic_ostream<Ch, Tr>& os,
-                          std::tuple<Args...> const& t) {
+decltype(auto) operator<<(std::basic_ostream<Ch, Tr>& os, std::tuple<Args...> const& t) {
     os << '(';
     print_tuple(os, t, std::make_index_sequence<sizeof...(Args)>());
     return os << ')';
@@ -34,7 +30,7 @@ decltype(auto) operator<<(std::basic_ostream<Ch, Tr>& os,
 
 template <typename T>
 struct has_const_iterator {
-  private:
+private:
     typedef char one;
     typedef struct {
         char array[2];
@@ -45,7 +41,7 @@ struct has_const_iterator {
     template <typename C>
     static two test(...);
 
-  public:
+public:
     static const bool value = sizeof(test<T>(0)) == sizeof(one);
     typedef T type;
 };
@@ -55,9 +51,7 @@ struct has_begin_end {
     struct Dummy {
         typedef void const_iterator;
     };
-    typedef
-        typename std::conditional<has_const_iterator<T>::value, T, Dummy>::type
-            TType;
+    typedef typename std::conditional<has_const_iterator<T>::value, T, Dummy>::type TType;
     typedef typename TType::const_iterator iter;
 
     struct Fallback {
@@ -84,14 +78,12 @@ struct has_begin_end {
 
 template <typename T>
 struct is_container {
-    static const bool value = has_const_iterator<T>::value &&
-                              has_begin_end<T>::beg_value &&
-                              has_begin_end<T>::end_value;
+    static const bool value =
+        has_const_iterator<T>::value && has_begin_end<T>::beg_value && has_begin_end<T>::end_value;
 };
 
 template <class Ch, class Tr, class T>
-typename std::enable_if<is_container<T>::value,
-                        std::basic_ostream<Ch, Tr>&>::type
+typename std::enable_if<is_container<T>::value, std::basic_ostream<Ch, Tr>&>::type
 operator<<(std::basic_ostream<Ch, Tr>& os, const T& container) {
     os << '{';
 
