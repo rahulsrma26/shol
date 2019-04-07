@@ -1,6 +1,13 @@
 # shol
 
-Simple header only library for C++. Containing various useful functions. Like python like print support for conatiners using cout see [std_cout](examples/std_cout.cpp).
+Simple header only library for C++. Containing various useful functions. Things like, python type print support for containers using cout:
+```cpp
+map<string, int> dict = {{"one", 1}, {"two", 2}};
+cout << dict << endl;
+// this will print {(one, 1), (two, 2)}
+// it'll work on any nested combination of containers.
+```
+for more see [std_cout](examples/std_cout.cpp).
 
 I've tried to make it as cross platform as possible. But there is no guarantee. Examples are tested for Windows, MacOX and Linux.
 

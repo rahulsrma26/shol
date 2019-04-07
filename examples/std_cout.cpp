@@ -22,7 +22,7 @@ int main() {
     cout << "vector<pair<int, string>>: " << ary_pair << endl;
 
     map<string, int> dict = {{"one", 1}, {"two", 2}};
-    cout << "map<string,int>: " << ary_pair << endl;
+    cout << "map<string,int>: " << dict << endl;
 
     vector<vector<int>> mat = {{1, 2}, {3, 4}};
     cout << "vector<vector<int>>: " << mat << endl;
@@ -30,10 +30,11 @@ int main() {
 
 /*
 Expected Output:
+===============
 pair<int, string>: (1, one)
 tuple<int, double, string>: (1, 2, test)
 vector<int>: {1, 2, 3, 4}
 vector<pair<int, string>>: {(1, one), (2, two)}
-map<string,int>: {(1, one), (2, two)}
+map<string,int>: {(one, 1), (two, 2)}
 vector<vector<int>>: {{1, 2}, {3, 4}}
 */
