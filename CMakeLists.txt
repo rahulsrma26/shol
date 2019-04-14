@@ -12,10 +12,11 @@ project (examples)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall")
 
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
 file(GLOB EXAMPLES_SRC "examples/*.cpp")
 # create executable for each example
 foreach( file ${EXAMPLES_SRC})
     get_filename_component(EXE_NAME ${file} NAME_WE)
     add_executable(${EXE_NAME} ${file})
-    target_include_directories(${EXE_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/include)
 endforeach( file ${EXAMPLES_SRC} )
